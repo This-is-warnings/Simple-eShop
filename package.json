@@ -1,0 +1,22 @@
+{
+  "name": "simple-eshop",
+  "version": "1.0.0",
+  "description": "Project for courses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/This-is-warnings/Simple-eShop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/This-is-warnings/Simple-eShop/issues"
+  },
+  "homepage": "https://github.com/This-is-warnings/Simple-eShop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
