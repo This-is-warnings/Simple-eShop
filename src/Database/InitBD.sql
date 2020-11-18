@@ -42,7 +42,7 @@ CREATE TABLE marks
    --FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
-CREATE TABLE delete_request
+CREATE TABLE delete_requests
 (
    id               INT             PRIMARY KEY     AUTO_INCREMENT,
    user_id          INT             NOT NULL,
