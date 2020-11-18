@@ -1,56 +1,58 @@
 const sequalize = require('sequelize');
+const model = require('./index.js');
 
-const Product = sequalize.define('product',
+module.exports = function(sequelize){
+    return sequelize.define('products',
 {
     // Model attributes are defined here
     id: {
-        type:           DataTypes.INTEGER,//DataTypes.UUID,
+        type:           sequalize.INTEGER,//DataTypes.UUID,
         primaryKey:     true,
-        field:          id,
+        field:          'id',
         //defaultValue:   Sequelize.UUIDV4, //(?) 
-        autoIncrement:  true //???? 
+        autoIncrement: true //???? 
     },
     name: {
-        type:           DataTypes.STRING(100),
-        field:          name,
+        type:           sequalize.STRING(100),
+        field:          'name',
         allowNull:      false,
-        unique:         true
+        unique:         false
     },
     description: {
-        type:           DataTypes.TEXT,
-        field:          description,
+        type:           sequalize.TEXT,
+        field:          'description',
         allowNull:      false,
-        unique:         true
+        unique:         false,
     },
     price: {
-        type:           DataTypes.FLOAT,//I couldn't find the money type
-        field:          price,
+        type:           sequalize.FLOAT,//I couldn't find the money type
+        field:          'price',
         allowNull:      true,
         unique:         false
     },
-    //last_update created by default
     image: {
-        type:           DataTypes.STRING(256),
-        field:          image,
+        type:           sequalize.STRING(100),
+        field:          'image',
         allowNull:      true,
         unique:         false
     },
     amount: {
-        type:           DataTypes.INTEGER,
-        field:          amount,
+        type:           sequalize.INTEGER,
+        field:          'amount',
         allowNull:      false,
         unique:         false
     },
     average_rating: {
-        type:           DataTypes.float,
-        field:          average_rating,
+        type:           sequalize.FLOAT,
+        field:          'average_rating',
         allowNull:      true,
         unique:         false
     },
-
-   
+   /* deleted_at: { created by default
+        type:           DataTypes.DATE,
+        field:          create_at
+    }*/ 
   }, {
-    
+    // Other model options go here
   });
-
-  await Product.sync();
+}

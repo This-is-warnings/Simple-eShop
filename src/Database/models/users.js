@@ -1,38 +1,57 @@
 const sequalize = require('sequelize');
+const model = require('./index.js');
 
-const User = sequalize.define('user',
+module.exports = function(sequelize){
+    return sequelize.define('users',
 {
     // Model attributes are defined here
     id: {
-        type:           DataTypes.INTEGER,//DataTypes.UUID,
+        type:           sequalize.INTEGER,//DataTypes.UUID,
         primaryKey:     true,
-        field:          id,
+        field:          'id',
         //defaultValue:   Sequelize.UUIDV4, //(?) 
         autoIncrement: true //???? 
     },
     name: {
-        type:           DataTypes.STRING(100),
-        field:          name,
+        type:           sequalize.STRING(100),
+        field:          'name',
         allowNull:      false,
-        unique:         true
+        unique:         false,
+        validate:
+        {
+            notEmpty:  true
+        }
     },
     email: {
-        type:           DataTypes.STRING(100),
-        field:          email,
+        type:           sequalize.STRING(100),
+        field:          'email',
         allowNull:      false,
-        unique:         true
+        unique:         true,
+        validate:
+        {
+            isEmail:    true,
+            notEmpty:  true
+        }
     },
     login: {
-        type:           DataTypes.STRING(100),
-        field:          login,
+        type:           sequalize.STRING(100),
+        field:          'login',
         allowNull:      false,
-        unique:         true
+        unique:         true,
+        validate:
+        {
+            notEmpty:  true
+        }
     },
     password: {
-        type:           DataTypes.STRING(100),
-        field:          password,
+        type:           sequalize.STRING(100),
+        field:          'password',
         allowNull:      false,
-        unique:         true
+        unique:         true,
+        validate:
+        {
+            notEmpty:  true
+        }
     },
    /* deleted_at: { created by default
         type:           DataTypes.DATE,
@@ -41,5 +60,4 @@ const User = sequalize.define('user',
   }, {
     // Other model options go here
   });
-
-  await User.sync();
+}
